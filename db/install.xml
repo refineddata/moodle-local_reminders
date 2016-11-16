@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/reminders/db" VERSION="20130702" COMMENT="XMLDB file for Moodle local/reminders"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="reminders" COMMENT="Email messages to be sent related to events" NEXT="reminder_templates">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="event"/>
+        <FIELD NAME="event" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="id" NEXT="code"/>
+        <FIELD NAME="code" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" PREVIOUS="event" NEXT="delta"/>
+        <FIELD NAME="delta" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="code" NEXT="sent"/>
+        <FIELD NAME="sent" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="delta" NEXT="aftertype"/>
+        <FIELD NAME="aftertype" TYPE="int" LENGTH="1" NOTNULL="false" DEFAULT="0" SEQUENCE="false" PREVIOUS="sent" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="aftertype"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="event"/>
+        <KEY NAME="event" TYPE="foreign" FIELDS="event" REFTABLE="event" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="event" UNIQUE="false" FIELDS="event"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="reminder_templates" COMMENT="HTML templates to create emails from" PREVIOUS="reminders">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="code"/>
+        <FIELD NAME="code" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="lang"/>
+        <FIELD NAME="lang" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" PREVIOUS="code" NEXT="userfrom"/>
+        <FIELD NAME="userfrom" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="lang" NEXT="subject"/>
+        <FIELD NAME="subject" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" PREVIOUS="userfrom" NEXT="body"/>
+        <FIELD NAME="body" TYPE="text" NOTNULL="true" SEQUENCE="false" PREVIOUS="subject" NEXT="vevent"/>
+        <FIELD NAME="vevent" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false" PREVIOUS="body" NEXT="vbody"/>
+        <FIELD NAME="vbody" TYPE="text" NOTNULL="true" SEQUENCE="false" PREVIOUS="vevent" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="vbody"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="code_lang" UNIQUE="false" FIELDS="code, lang"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>
