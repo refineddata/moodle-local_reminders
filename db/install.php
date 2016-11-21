@@ -36,7 +36,7 @@ function xmldb_local_reminders_install( $oldversion = 0 ) {
 	$reminder_template->lang     = 'en_us';
 	$reminder_template->userfrom = 'Refined Training';
 	$reminder_template->subject  = '[[name]]';
-        include($CFG->dirroot . '/local/reminders/templates/email_refined_meet.php');
+	include($CFG->dirroot . '/local/reminders/templates/email_refined_meet.php');
 	$reminder_template->body     = $template;
 	$reminder_template->vevent   = 0;
 	$reminder_template->vbody    = '';
@@ -48,7 +48,7 @@ function xmldb_local_reminders_install( $oldversion = 0 ) {
 	$reminder_template->lang     = 'en_us';
 	$reminder_template->userfrom = 'Refined Training';
 	$reminder_template->subject  = '[[name]]';
-        include($CFG->dirroot . '/local/reminders/templates/email_refined_general.php');
+	include($CFG->dirroot . '/local/reminders/templates/email_refined_general.php');
 	$reminder_template->body     = $template;
 	$reminder_template->vevent   = 0;
 	$reminder_template->vbody    = '';
