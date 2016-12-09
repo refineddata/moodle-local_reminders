@@ -335,8 +335,8 @@ function reminders_get_course_users( $event ) {
 	                                                                           'record_used' => 0
 	) )
 	) {
-		if ( $connect = $DB->get_record( 'connectmeeting_recurring', array( 'id' => $instance->connectid ) ) ) {
-			if ( $cm = get_coursemodule_from_instance( 'connectmeeting_recurring', $connect->id, $connect->course ) ) {
+		if ( $connect = $DB->get_record( 'connectmeeting', array( 'id' => $instance->connectmeetingid ) ) ) {
+			if ( $cm = get_coursemodule_from_instance( 'connectmeeting', $connect->id, $connect->course ) ) {
 				if ( $cm->groupmode == 1 AND $instance->groupingid ) {
 					$groupingid = $instance->groupingid;
 				}
