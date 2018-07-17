@@ -413,6 +413,7 @@ function _reminders_msgsub( $str, $message, $course, $user, $event, $other ) {
 	$str = str_replace( '[[nurl]]', $CFG->wwwroot . '/course/view.php?id=' . $course->id, $str );
 	$str = str_replace( '[[nmeeting]]', empty( $event->acurl ) ? '' : $CFG->wwwroot . '/mod/connectmeeting/launch.php?acurl=' . $event->acurl . $tok, $str );
 	$str = str_replace( '[[nievent]]', ( $event->id == 0 ) ? '' : $CFG->wwwroot . '/local/reminders/ievent.php/?evt=' . $event->id . '&rem=' . $message->id . $tok, $str );
+    $str = str_replace( '[[acmeetingname]]', empty( $event->acurl ) ? '' : $event->acurl, $str);
 
 	// Only applicable if called from Invitations
 	if ( isset( $user->refername ) ) {

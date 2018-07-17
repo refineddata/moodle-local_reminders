@@ -64,6 +64,7 @@ if( file_exists( "$CFG->dirroot/local/core/lib.php" ) ){
 									   [[url]] = URL to Course Page<br/>
 									   [[urlx]] = URL to Course Page (auto-login)<br/>
 									   [[connecturl]] = URL to login for AC meeting or recording (auto-login)<br/>
+									   [[acmeetingname]] = Adobe Connect meeting name<br/>
 									   [[ievent]] = URL to Download Outlook reminder<br/>
 									   [[cpurl]] = URL address link to Connect Pro meeting login<br/>
 									   [[course]] = Full name of course (for course reminders).<br/>
