@@ -41,8 +41,8 @@
     
     echo $OUTPUT->heading('<center><h1>'.$browsestr.'</h1></center>');
     // Set up configuration variables
-    $editicon = " <img src='" . $OUTPUT->pix_url('/t/edit') . "' class='iconsmall' alt='Edit' />";
-    $deleteicon = " <img src='" . $OUTPUT->pix_url('/t/delete') . "' class='iconsmall' alt='Delete' />";
+    $editicon = " <img src='" . $OUTPUT->image_url('/t/edit') . "' class='iconsmall' alt='Edit' />";
+    $deleteicon = " <img src='" . $OUTPUT->image_url('/t/delete') . "' class='iconsmall' alt='Delete' />";
 
     // Get all reminders
     $reminders    = get_reminders( $sort );
